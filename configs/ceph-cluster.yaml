@@ -1,0 +1,20 @@
+apiVersion: ceph.rook.io/v1
+kind: CephCluster
+metadata:
+  name: my-rook-ceph
+  namespace: my-rook-ceph
+spec:
+  cephVersion:
+    image: 'ceph/ceph:v14.2.4-20190917'
+  dataDirHostPath: /var/lib/rook
+  mon:
+    count: 3
+  dashboard:
+    enabled: true
+  network:
+    hostNetwork: false
+  rbdMirroring:
+    workers: 0
+  storage:
+    useAllNodes: true
+    useAllDevices: true
